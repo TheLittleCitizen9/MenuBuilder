@@ -4,10 +4,10 @@ using System.Text;
 
 namespace MenuBuilder
 {
-    public class ExitAction : IActions<int>
+    public class IntExitAction : IActions<int>
     {
         private IMenu<int> _prevMenu;
-        public ExitAction(IMenu<int> prevMenu)
+        public IntExitAction(IMenu<int> prevMenu)
         {
             _prevMenu = prevMenu;
         }

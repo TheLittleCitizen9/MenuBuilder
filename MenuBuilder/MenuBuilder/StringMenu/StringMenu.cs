@@ -7,8 +7,9 @@ namespace MenuBuilder.StringMenu
 {
     public class StringMenu : BasicMenu<string>
     {
-        private readonly List<string> _inputOptions = new List<string> { "1", "2", "3", "4" };
-        private readonly List<string> _requaiersInput = new List<string> { "1", "2" };
+        private const string ERROR_MSG = "Invalid input";
+        private readonly List<string> _inputOptions = new List<string> { "Reverse"};
+        private readonly List<string> _requaiersInput = new List<string> { "Reverse"};
         private BasicValidator _validator;
         private ConsoleDisplayer _consoleDisplayer;
 
@@ -20,30 +21,48 @@ namespace MenuBuilder.StringMenu
         {
             _displayOptions = new Dictionary<string, string>
             {
-                {"1", "Add Numbers" },
-                {"2", "Reduce Numbers" },
-                {"3", "Go To String Menu" },
-                {"4", "Exit" }
+                {"Reverse", "Reverse a word" },
+                {"Exit", "Exit from String Menu" }
             };
             _consoleDisplayer = new ConsoleDisplayer(_displayOptions);
             _options = new Dictionary<string, IActions<string>>
             {
-                {"Reverse", new ReverseAction() },
-                {"Combine", new ReduceAction() },
-                {"Exit", new ExitAction(null) }
+                {"Reverse", new ReverseAction() }
             };
 
-            var options = _options.Keys.ToList();
-            _validator = new IntValidator(_inputOptions);
+            _validator = new StringValidator(_inputOptions);
         }
         public override void Main()
         {
-            throw new NotImplementedException();
+            string input = string.Empty;
+            while (input != "Exit")
+            {
+                _consoleDisplayer.ShowOptions();
+                input = Console.ReadLine();
+                bool isInputValid = _validator.Validate(input);
+                if (isInputValid)
+                {
+                    if (_requaiersInput.Contains(input))
+                    {
+                        string[] variables = Console.ReadLine().Split(',');
+                        RunOption(input, variables);
+                    }
+                    else
+                    {
+                        RunOption(input);
+                    }
+                }
+                else
+                {
+                    _consoleDisplayer.PrintValueToConsole(ERROR_MSG);
+                }
+            }
         }
 
         public override void RunOption(string option, params string[] variables)
         {
-            throw new NotImplementedException();
+            string result = _options[option].Action(variables);
+            _consoleDisplayer.PrintValueToConsole(result);
         }
     }
 }

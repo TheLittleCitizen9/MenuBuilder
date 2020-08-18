@@ -8,6 +8,7 @@ namespace MenuBuilder
 {
     public class IntegersMenu : BasicMenu<int>
     {
+        private const string ERROR_MSG = "Invalid input";
         private readonly List<string> _inputOptions = new List<string> { "1", "2", "3", "4" };
         private readonly List<string> _requaiersInput = new List<string> { "1", "2" };
         private BasicValidator _validator;
@@ -31,10 +32,9 @@ namespace MenuBuilder
             {
                 {"1", new AddAction() },
                 {"2", new ReduceAction() },
-                {"4", new ExitAction(null) }
+                {"4", new IntExitAction(null) }
             };
 
-            var options = _options.Keys.ToList();
             _validator = new IntValidator(_inputOptions);
         }
 
@@ -57,6 +57,10 @@ namespace MenuBuilder
                     {
                         RunOption(input);
                     }
+                }
+                else
+                {
+                    _consoleDisplayer.PrintValueToConsole(ERROR_MSG);
                 }
             }
         }

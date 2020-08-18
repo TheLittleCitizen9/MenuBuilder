@@ -10,7 +10,9 @@ namespace MenuBuilder
 
             IntegersMenu integersMenu = new IntegersMenu();
 
-            integersMenu.Main();
+            StringMenu.StringMenu stringMenu = new StringMenu.StringMenu();
+
+            stringMenu.Main();
         }
     }
 }

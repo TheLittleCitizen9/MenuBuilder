@@ -20,5 +20,10 @@ namespace MenuBuilder
                 Console.WriteLine($"{item.Key} : {item.Value}");
             }
         }
+
+        public void PrintValueToConsole(object obj)
+        {
+            Console.WriteLine(obj);
+        }
     }
 }

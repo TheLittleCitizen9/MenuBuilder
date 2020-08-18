@@ -4,9 +4,9 @@ using System.Text;
 
 namespace MenuBuilder
 {
-    public interface IMenu
+    public interface IMenu<T>
     {
-        void RunOption(string option, string input = null);
+        void RunOption(string option, params T[] variables);
         void Main();
     }
 }

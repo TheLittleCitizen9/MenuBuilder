@@ -4,18 +4,10 @@ using System.Text;
 
 namespace MenuBuilder
 {
-    public abstract class BasicMenu : IMenu
+    public abstract class BasicMenu<T> : IMenu<T>
     {
-        public abstract BasicValidator Validator { get; set; }
-
-        public abstract ConsoleDisplayer ConsoleDisplayer { get; set; }
-
-        public abstract Dictionary<string, Func<string>> Options { get; set; }
-
-        public abstract Dictionary<string, string> displayOptions { get; set; }
-
         public abstract void Main();
 
-        public abstract void RunOption(string option, string input = null);
+        public abstract void RunOption(string option, params T[] variables);
     }
 }

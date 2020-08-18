@@ -7,6 +7,10 @@ namespace MenuBuilder
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            IntegersMenu integersMenu = new IntegersMenu();
+
+            integersMenu.Main();
         }
     }
 }

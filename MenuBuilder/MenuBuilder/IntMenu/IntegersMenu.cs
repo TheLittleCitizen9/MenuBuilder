@@ -47,20 +47,16 @@ namespace MenuBuilder
                 bool isInputValid = validator.Validate(input);
                 if(isInputValid)
                 {
-                    if(true)
+                    consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
+                    string userInput = Console.ReadLine();
+                    if (userInput != string.Empty)
                     {
-                        consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
-                        string userInput = Console.ReadLine();
-                        if (userInput != string.Empty)
-                        {
-                            int[] variables = userInput.Split(',').Select(v => Int32.Parse(v)).ToArray();
-                            RunOption(input, variables);
-                        }
-                        else
-                        {
-                            RunOption(input);
-                        }
-                        
+                        int[] variables = userInput.Split(',').Select(v => Int32.Parse(v)).ToArray();
+                        RunOption(input, variables);
+                    }
+                    else
+                    {
+                        RunOption(input);
                     }
                 }
                 else

@@ -8,6 +8,7 @@ namespace MenuBuilder.StringMenu
 {
     public class StringMenu : BasicMenu<string>
     {
+        private const string ENTER_VARIABLES = "Enter variables, if you don't need - press enter";
         private const string ERROR_MSG = "Invalid input";
         private readonly List<string> _requaiersInput = new List<string> { "Reverse"};
 
@@ -39,9 +40,11 @@ namespace MenuBuilder.StringMenu
                 bool isInputValid = validator.Validate(input);
                 if (isInputValid)
                 {
-                    if (_requaiersInput.Contains(input))
+                    consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
+                    string userInput = Console.ReadLine();
+                    if (userInput != string.Empty)
                     {
-                        string[] variables = Console.ReadLine().Split(',');
+                        string[] variables = userInput.Split(',');
                         RunOption(input, variables);
                     }
                     else
@@ -49,7 +52,7 @@ namespace MenuBuilder.StringMenu
                         RunOption(input);
                     }
                 }
-                else if(input != "Exit")
+                else
                 {
                     consoleDisplayer.PrintValueToConsole(ERROR_MSG);
                 }

@@ -7,9 +7,14 @@ namespace MenuBuilder.StringMenu
 {
     public class ReverseAction : IActions<string>
     {
-        public string Action(params string[] parameters)
+        public void Action(params string[] parameters)
         {
-            if(parameters.Length > 1 || parameters.Length == 0)
+            Console.WriteLine(ReverseString(parameters));
+        }
+
+        public string ReverseString(params string[] parameters)
+        {
+            if (parameters.Length > 1 || parameters.Length == 0)
             {
                 return "Invalid Input";
             }

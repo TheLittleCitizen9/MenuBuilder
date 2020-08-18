@@ -7,9 +7,14 @@ namespace MenuBuilder.IntMenu
 {
     public class AddAction : IActions<int>
     {
-        public int Action(params int[] parameters)
+        public void Action(params int[] parameters)
         {
-            if(parameters.Length > 0)
+            Console.WriteLine(AddNumbers(parameters));
+        }
+
+        private int AddNumbers(params int[] parameters)
+        {
+            if (parameters.Length > 0)
             {
                 return parameters.Sum();
             }

@@ -6,6 +6,6 @@ namespace MenuBuilder
 {
     public interface IActions<T>
     {
-        T Action(params T[] parameters);
+        void Action(params T[] parameters);
     }
 }

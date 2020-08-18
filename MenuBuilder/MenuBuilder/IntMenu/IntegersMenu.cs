@@ -68,8 +68,7 @@ namespace MenuBuilder
 
         public override void RunOption(string option, params int[] variables)
         {
-            int result = _options[option].Action(variables);
-            _consoleDisplayer.PrintValueToConsole(result);
+            _options[option].Action(variables);
         }
     }
 }

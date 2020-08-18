@@ -11,13 +11,12 @@ namespace MenuBuilder.StringMenu
         {
             _prevMenu = prevMenu;
         }
-        public string Action(params string[] parameters)
+        public void Action(params string[] parameters)
         {
             if(_prevMenu != null)
             {
                 _prevMenu.Main();
             }
-            return "Exiting String Menu";
         }
     }
 }

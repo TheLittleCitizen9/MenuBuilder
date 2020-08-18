@@ -12,13 +12,12 @@ namespace MenuBuilder
             _prevMenu = prevMenu;
         }
 
-        public int Action(params int[] parameters)
+        public void Action(params int[] parameters)
         {
             if(_prevMenu != null)
             {
                 _prevMenu.Main();
             }
-            return 0;
         }
     }
 }

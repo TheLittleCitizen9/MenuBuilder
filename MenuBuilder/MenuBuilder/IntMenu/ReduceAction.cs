@@ -7,9 +7,14 @@ namespace MenuBuilder.IntMenu
 {
     public class ReduceAction : IActions<int>
     {
-        public int Action(params int[] parameters)
+        public void Action(params int[] parameters)
         {
-            int reduced = -1;
+            Console.WriteLine(ReduceNumbers(parameters));
+        }
+
+        private int ReduceNumbers(params int[] parameters)
+        {
+            int reduced = 0;
             if (parameters.Length > 0)
             {
                 reduced = parameters[0];

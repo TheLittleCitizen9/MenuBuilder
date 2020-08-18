@@ -12,10 +12,9 @@ namespace MenuBuilder.IntMenu
         {
             _nextMenu = nextMenu;
         }
-        public int Action(params int[] parameters)
+        public void Action(params int[] parameters)
         {
             _nextMenu.Main();
-            return 0;
         }
     }
 }

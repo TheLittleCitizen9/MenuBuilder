@@ -14,10 +14,7 @@ namespace MenuBuilder
 
         public void Action(params int[] parameters)
         {
-            if(_prevMenu != null)
-            {
-                _prevMenu.Main();
-            }
+            Environment.Exit(1);
         }
     }
 }

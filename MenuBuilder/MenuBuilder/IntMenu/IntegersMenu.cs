@@ -1,6 +1,7 @@
 ﻿using MenuBuilder.IntMenu;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -20,33 +21,29 @@ namespace MenuBuilder
 
         public IntegersMenu()
         {
-            _displayOptions = new Dictionary<string, string>
-            {
-                {"1", "Add Numbers" },
-                {"2", "Reduce Numbers" },
-                {"3", "Go To String Menu" },
-                {"4", "Exit" }
-            };
+            
             _consoleDisplayer = new ConsoleDisplayer(_displayOptions);
-            _options = new Dictionary<string, IActions<int>>
-            {
-                {"1", new AddAction() },
-                {"2", new ReduceAction() },
-                {"3", new GoToMenuAction(new StringMenu.StringMenu())},
-                {"4", new IntExitAction(null) }
-            };
+            _options = new Dictionary<string, IActions<int>>();
+            _displayOptions = new Dictionary<string, string>();
+            
+        }
 
-            _validator = new IntValidator(_inputOptions);
+        public override void AddAction(string num, string description, IActions<int> action)
+        {
+            _options.Add(num, action);
+            _displayOptions.Add(num, description);
         }
 
         public override void Main()
         {
+            ConsoleDisplayer consoleDisplayer = new ConsoleDisplayer(_displayOptions);
+            IntValidator validator = new IntValidator(_options.Keys.ToList());
             string input = string.Empty;
             while (input != "4")
             {
-                _consoleDisplayer.ShowOptions();
+                consoleDisplayer.ShowOptions();
                 input = Console.ReadLine();
-                bool isInputValid = _validator.Validate(input);
+                bool isInputValid = validator.Validate(input);
                 if(isInputValid)
                 {
                     if(_requaiersInput.Contains(input))
@@ -61,7 +58,7 @@ namespace MenuBuilder
                 }
                 else
                 {
-                    _consoleDisplayer.PrintValueToConsole(ERROR_MSG);
+                    consoleDisplayer.PrintValueToConsole(ERROR_MSG);
                 }
             }
         }

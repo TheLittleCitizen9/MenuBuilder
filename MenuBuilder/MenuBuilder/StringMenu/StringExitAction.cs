@@ -17,6 +17,10 @@ namespace MenuBuilder.StringMenu
             {
                 _prevMenu.Main();
             }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }

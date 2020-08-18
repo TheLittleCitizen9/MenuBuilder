@@ -13,7 +13,7 @@ namespace MenuBuilder.IntMenu
             {
                 return parameters.Sum();
             }
-            return 0;
+            return -1;
         }
     }
 }

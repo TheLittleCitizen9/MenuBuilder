@@ -9,7 +9,7 @@ namespace MenuBuilder.IntMenu
     {
         public int Action(params int[] parameters)
         {
-            int reduced = 0;
+            int reduced = -1;
             if (parameters.Length > 0)
             {
                 reduced = parameters[0];

@@ -18,7 +18,7 @@ namespace MenuBuilder
             {
                 _prevMenu.Main();
             }
-            return -1;
+            return 0;
         }
     }
 }

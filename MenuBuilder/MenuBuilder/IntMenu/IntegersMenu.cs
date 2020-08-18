@@ -40,10 +40,11 @@ namespace MenuBuilder
 
         public override void Main()
         {
-            while(true)
+            string input = string.Empty;
+            while (input != "4")
             {
                 _consoleDisplayer.ShowOptions();
-                string input = Console.ReadLine();
+                input = Console.ReadLine();
                 bool isInputValid = _validator.Validate(input);
                 if(isInputValid)
                 {

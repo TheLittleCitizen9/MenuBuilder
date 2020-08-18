@@ -32,7 +32,7 @@ namespace MenuBuilder.StringMenu
             StringValidator validator = new StringValidator(_options.Keys.ToList());
             ConsoleDisplayer consoleDisplayer = new ConsoleDisplayer(_displayOptions);
             string input = string.Empty;
-            while (input != "Exit")
+            while (true)
             {
                 consoleDisplayer.ShowOptions();
                 input = Console.ReadLine();

@@ -10,6 +10,7 @@ namespace MenuBuilder
     public class IntegersMenu : BasicMenu<int>
     {
         private const string ERROR_MSG = "Invalid input";
+        private const string ENTER_VARIABLES = "Enter variables, if you don't need - press enter";
         private readonly List<string> _inputOptions = new List<string> { "1", "2", "3", "4" };
         private readonly List<string> _requaiersInput = new List<string> { "1", "2" };
         private BasicValidator _validator;
@@ -39,21 +40,27 @@ namespace MenuBuilder
             ConsoleDisplayer consoleDisplayer = new ConsoleDisplayer(_displayOptions);
             IntValidator validator = new IntValidator(_options.Keys.ToList());
             string input = string.Empty;
-            while (input != "4")
+            while (true)
             {
                 consoleDisplayer.ShowOptions();
                 input = Console.ReadLine();
                 bool isInputValid = validator.Validate(input);
                 if(isInputValid)
                 {
-                    if(_requaiersInput.Contains(input))
+                    if(true)
                     {
-                        int[] variables = Console.ReadLine().Split(',').Select(v => Int32.Parse(v)).ToArray();
-                        RunOption(input, variables);
-                    }
-                    else
-                    {
-                        RunOption(input);
+                        consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
+                        string userInput = Console.ReadLine();
+                        if (userInput != string.Empty)
+                        {
+                            int[] variables = userInput.Split(',').Select(v => Int32.Parse(v)).ToArray();
+                            RunOption(input, variables);
+                        }
+                        else
+                        {
+                            RunOption(input);
+                        }
+                        
                     }
                 }
                 else

@@ -6,15 +6,16 @@ namespace MenuBuilder.IntMenu
 {
     public class GoToMenuAction : IActions<int>
     {
-        private IMenu<int> _nextMenu;
+        private IMenu<string> _nextMenu;
 
-        public GoToMenuAction(IMenu<int> nextMenu)
+        public GoToMenuAction(IMenu<string> nextMenu)
         {
             _nextMenu = nextMenu;
         }
         public int Action(params int[] parameters)
         {
-            return 1;
+            _nextMenu.Main();
+            return 0;
         }
     }
 }

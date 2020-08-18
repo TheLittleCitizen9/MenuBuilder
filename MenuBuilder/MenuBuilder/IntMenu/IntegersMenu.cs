@@ -32,6 +32,7 @@ namespace MenuBuilder
             {
                 {"1", new AddAction() },
                 {"2", new ReduceAction() },
+                {"3", new GoToMenuAction(new StringMenu.StringMenu())},
                 {"4", new IntExitAction(null) }
             };
 

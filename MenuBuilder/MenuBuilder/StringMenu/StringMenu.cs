@@ -52,7 +52,7 @@ namespace MenuBuilder.StringMenu
                         RunOption(input);
                     }
                 }
-                else
+                else if(input != "Exit")
                 {
                     _consoleDisplayer.PrintValueToConsole(ERROR_MSG);
                 }

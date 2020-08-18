@@ -12,7 +12,7 @@ namespace MenuBuilder
 
             StringMenu.StringMenu stringMenu = new StringMenu.StringMenu();
 
-            stringMenu.Main();
+            integersMenu.Main();
         }
     }
 }

@@ -6,8 +6,8 @@ namespace MenuBuilder.StringMenu
 {
     public class StringExitAction : IActions<string>
     {
-        private IMenu<string> _prevMenu;
-        public StringExitAction(IMenu<string> prevMenu)
+        private IMenu<int> _prevMenu;
+        public StringExitAction(IMenu<int> prevMenu)
         {
             _prevMenu = prevMenu;
         }

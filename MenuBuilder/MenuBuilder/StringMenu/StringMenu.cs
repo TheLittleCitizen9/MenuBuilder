@@ -28,6 +28,7 @@ namespace MenuBuilder.StringMenu
             _options = new Dictionary<string, IActions<string>>
             {
                 {"Reverse", new ReverseAction() }
+                //{"Exit", new StringExitAction(new IntegersMenu()) }
             };
 
             _validator = new StringValidator(_inputOptions);

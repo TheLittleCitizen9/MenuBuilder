@@ -10,6 +10,6 @@ namespace MenuBuilder
 
         public abstract void RunOption(string option, params T[] variables);
 
-        public abstract void AddAction(string num, string description, IActions<T> action);
+        public abstract void AddAction(string num, string description, IActions<T> action, bool requiersInput=false);
     }
 }

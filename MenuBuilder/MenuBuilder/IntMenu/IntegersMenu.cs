@@ -10,11 +10,8 @@ namespace MenuBuilder
     public class IntegersMenu : BasicMenu<int>
     {
         private const string ERROR_MSG = "Invalid input";
-        private const string ENTER_VARIABLES = "Enter variables, if you don't need - press enter";
-        private readonly List<string> _inputOptions = new List<string> { "1", "2", "3", "4" };
+        private const string ENTER_VARIABLES = "Enter variables";
         private readonly List<string> _requaiersInput = new List<string> { "1", "2" };
-        private BasicValidator _validator;
-        private ConsoleDisplayer _consoleDisplayer;
 
         private Dictionary<string, IActions<int>> _options;
 
@@ -22,17 +19,19 @@ namespace MenuBuilder
 
         public IntegersMenu()
         {
-            
-            _consoleDisplayer = new ConsoleDisplayer(_displayOptions);
             _options = new Dictionary<string, IActions<int>>();
             _displayOptions = new Dictionary<string, string>();
             
         }
 
-        public override void AddAction(string num, string description, IActions<int> action)
+        public override void AddAction(string option, string description, IActions<int> action, bool requiersInput=false)
         {
-            _options.Add(num, action);
-            _displayOptions.Add(num, description);
+            _options.Add(option, action);
+            _displayOptions.Add(option, description);
+            if(requiersInput)
+            {
+                _requaiersInput.Add(option);
+            }
         }
 
         public override void Main()
@@ -47,10 +46,10 @@ namespace MenuBuilder
                 bool isInputValid = validator.Validate(input);
                 if(isInputValid)
                 {
-                    consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
-                    string userInput = Console.ReadLine();
-                    if (userInput != string.Empty)
+                    if (_requaiersInput.Contains(input))
                     {
+                        consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
+                        string userInput = Console.ReadLine();
                         int[] variables = userInput.Split(',').Select(v => Int32.Parse(v)).ToArray();
                         RunOption(input, variables);
                     }

@@ -15,6 +15,7 @@ namespace MenuBuilder
 
         public void ShowOptions()
         {
+            Console.WriteLine("Welcome to Menu");
             foreach (KeyValuePair<string, string> item in _options)
             {
                 Console.WriteLine($"{item.Key} : {item.Value}");

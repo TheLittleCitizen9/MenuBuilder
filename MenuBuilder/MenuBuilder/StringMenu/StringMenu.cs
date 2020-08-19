@@ -8,9 +8,9 @@ namespace MenuBuilder.StringMenu
 {
     public class StringMenu : BasicMenu<string>
     {
-        private const string ENTER_VARIABLES = "Enter variables, if you don't need - press enter";
+        private const string ENTER_VARIABLES = "Enter variables";
         private const string ERROR_MSG = "Invalid input";
-        private readonly List<string> _requaiersInput = new List<string> { "Reverse"};
+        private readonly List<string> _requaiersInput = new List<string>();
 
         private Dictionary<string, IActions<string>> _options;
 
@@ -22,17 +22,21 @@ namespace MenuBuilder.StringMenu
             _options = new Dictionary<string, IActions<string>>();
         }
 
-        public override void AddAction(string option, string description, IActions<string> action)
+        public override void AddAction(string option, string description, IActions<string> action, bool requiersInput=false)
         {
             _options.Add(option, action);
             _displayOptions.Add(option, description);
+            if(requiersInput)
+            {
+                _requaiersInput.Add(option);
+            }
         }
 
         public override void Main()
         {
             StringValidator validator = new StringValidator(_options.Keys.ToList());
             ConsoleDisplayer consoleDisplayer = new ConsoleDisplayer(_displayOptions);
-            string input = string.Empty;
+            string input;
             while (true)
             {
                 consoleDisplayer.ShowOptions();
@@ -40,10 +44,10 @@ namespace MenuBuilder.StringMenu
                 bool isInputValid = validator.Validate(input);
                 if (isInputValid)
                 {
-                    consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
-                    string userInput = Console.ReadLine();
-                    if (userInput != string.Empty)
+                    if (_requaiersInput.Contains(input))
                     {
+                        consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
+                        string userInput = Console.ReadLine();
                         string[] variables = userInput.Split(',');
                         RunOption(input, variables);
                     }

@@ -14,7 +14,7 @@ namespace MenuBuilder
 
         public void Action(params int[] parameters)
         {
-            Environment.Exit(1);
+            Environment.Exit(0);
         }
     }
 }

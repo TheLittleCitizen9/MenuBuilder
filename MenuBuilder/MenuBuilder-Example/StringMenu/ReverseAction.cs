@@ -15,11 +15,17 @@ namespace MenuBuilder_Example.StringMenu
 
         public string ReverseString(params string[] parameters)
         {
-            if (parameters.Length > 1 || parameters.Length == 0)
+            string result = string.Empty;
+            if (parameters.Length == 0)
             {
                 return "Invalid Input";
             }
-            return new string(parameters[0].ToCharArray().Reverse().ToArray());
+            for(int i=parameters.Length-1; i>=0; i--)
+            {
+                string tempReversed = new string(parameters[i].ToCharArray().Reverse().ToArray());
+                result += $"{tempReversed} ";
+            }
+            return result;
         }
     }
 }

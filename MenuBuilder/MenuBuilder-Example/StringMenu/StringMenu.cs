@@ -9,7 +9,7 @@ namespace MenuBuilder_Example.StringMenu
 {
     public class StringMenu : BasicMenu<string>
     {
-        private const string ENTER_VARIABLES = "Enter variables";
+        private const string ENTER_VARIABLES = "Enter variables - format X Y";
         private const string ERROR_MSG = "Invalid input";
         private readonly List<string> _requaiersInput = new List<string>();
 
@@ -49,7 +49,7 @@ namespace MenuBuilder_Example.StringMenu
                     {
                         consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
                         string userInput = Console.ReadLine();
-                        string[] variables = userInput.Split(',');
+                        string[] variables = userInput.Split(' ');
                         RunOption(input, variables);
                     }
                     else

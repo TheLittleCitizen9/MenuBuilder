@@ -34,7 +34,7 @@ namespace MenuBuilder.StringMenu
 
         public override void Main()
         {
-            StringValidator validator = new StringValidator(_options.Keys.ToList());
+            BasicValidator validator = new BasicValidator(_options.Keys.ToList());
             ConsoleDisplayer consoleDisplayer = new ConsoleDisplayer(_displayOptions);
             string input;
             while (true)

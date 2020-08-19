@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MenuBuilder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MenuBuilder.StringMenu
+namespace MenuBuilder_Example.StringMenu
 {
     public class ReverseAction : IActions<string>
     {

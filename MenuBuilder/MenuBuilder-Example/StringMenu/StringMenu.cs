@@ -1,30 +1,29 @@
-﻿using MenuBuilder.IntMenu;
+﻿using MenuBuilder;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
-namespace MenuBuilder
+namespace MenuBuilder_Example.StringMenu
 {
-    public class IntegersMenu : BasicMenu<int>
+    public class StringMenu : BasicMenu<string>
     {
-        private const string ERROR_MSG = "Invalid input";
         private const string ENTER_VARIABLES = "Enter variables";
-        private readonly List<string> _requaiersInput = new List<string> { "1", "2" };
+        private const string ERROR_MSG = "Invalid input";
+        private readonly List<string> _requaiersInput = new List<string>();
 
-        private Dictionary<string, IActions<int>> _options;
+        private Dictionary<string, IActions<string>> _options;
 
         private Dictionary<string, string> _displayOptions;
 
-        public IntegersMenu()
+        public StringMenu()
         {
-            _options = new Dictionary<string, IActions<int>>();
             _displayOptions = new Dictionary<string, string>();
-            
+            _options = new Dictionary<string, IActions<string>>();
         }
 
-        public override void AddAction(string option, string description, IActions<int> action, bool requiersInput=false)
+        public override void AddAction(string option, string description, IActions<string> action, bool requiersInput=false)
         {
             _options.Add(option, action);
             _displayOptions.Add(option, description);
@@ -36,21 +35,21 @@ namespace MenuBuilder
 
         public override void Main()
         {
+            BasicValidator validator = new BasicValidator(_options.Keys.ToList());
             ConsoleDisplayer consoleDisplayer = new ConsoleDisplayer(_displayOptions);
-            IntValidator validator = new IntValidator(_options.Keys.ToList());
-            string input = string.Empty;
+            string input;
             while (true)
             {
                 consoleDisplayer.ShowOptions();
                 input = Console.ReadLine();
                 bool isInputValid = validator.Validate(input);
-                if(isInputValid)
+                if (isInputValid)
                 {
                     if (_requaiersInput.Contains(input))
                     {
                         consoleDisplayer.PrintValueToConsole(ENTER_VARIABLES);
                         string userInput = Console.ReadLine();
-                        int[] variables = userInput.Split(',').Select(v => Int32.Parse(v)).ToArray();
+                        string[] variables = userInput.Split(',');
                         RunOption(input, variables);
                     }
                     else
@@ -65,7 +64,7 @@ namespace MenuBuilder
             }
         }
 
-        public override void RunOption(string option, params int[] variables)
+        public override void RunOption(string option, params string[] variables)
         {
             _options[option].Action(variables);
         }

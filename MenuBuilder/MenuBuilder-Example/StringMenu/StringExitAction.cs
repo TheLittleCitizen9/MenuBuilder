@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MenuBuilder;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MenuBuilder.StringMenu
+namespace MenuBuilder_Example.StringMenu
 {
     public class StringExitAction : IActions<string>
     {

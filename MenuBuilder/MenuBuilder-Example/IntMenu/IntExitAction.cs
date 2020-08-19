@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MenuBuilder;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MenuBuilder
+namespace MenuBuilder_Example.IntMenu
 {
     public class IntExitAction : IActions<int>
     {

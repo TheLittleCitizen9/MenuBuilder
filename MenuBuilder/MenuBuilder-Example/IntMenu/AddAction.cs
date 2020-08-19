@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MenuBuilder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MenuBuilder.IntMenu
+namespace MenuBuilder_Example.IntMenu
 {
     public class AddAction : IActions<int>
     {

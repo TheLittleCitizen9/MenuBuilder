@@ -10,8 +10,8 @@ namespace MenuBuilder_Example.IntMenu
     public class IntegersMenu : BasicMenu<int>
     {
         private const string ERROR_MSG = "Invalid input";
-        private const string ENTER_VARIABLES = "Enter variables";
-        private readonly List<string> _requaiersInput = new List<string> { "1", "2" };
+        private const string ENTER_VARIABLES = "Enter variables - format X,Y,Z";
+        private readonly List<string> _requaiersInput = new List<string>();
 
         private Dictionary<string, IActions<int>> _options;
 

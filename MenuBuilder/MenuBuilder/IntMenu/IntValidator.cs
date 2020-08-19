@@ -12,8 +12,7 @@ namespace MenuBuilder.IntMenu
 
         public override bool Validate(string option)
         {
-            int result;
-            if(Int32.TryParse(option, out result))
+            if (int.TryParse(option, out _))
             {
                 return true && base.Validate(option);
             }

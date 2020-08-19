@@ -1,0 +1,8 @@
+Menu - Simple console that shows actions to preform.
+	Needs to get input from the user to know what action to preform.
+Action - Can be everything: a simple function that return\prints something, go to another menu from the current one, 
+	exiting the menu, returning to previous menu (if there is one)
+	Need to get the input from the user, and according to it, perform the action.
+	If the action is not to exit program or return to previous menu, than it needs to return to the menu.
+Invalid input - Needs to show an error saying the input is invalid, than show the menu again (not close the program).
+		Need to have validation on the user input.

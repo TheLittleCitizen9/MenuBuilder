@@ -15,11 +15,12 @@ namespace MenuBuilder_Example.IntMenu
 
         private int AddNumbers(params int[] parameters)
         {
+            int sum = 0;
             if (parameters.Length > 0)
             {
-                return parameters.Sum();
+                sum += parameters.Sum();
             }
-            return -1;
+            return sum;
         }
     }
 }
